@@ -1,0 +1,44 @@
+<div class="card-top container-fluid">
+    <div class="container d-flex">
+        <div class="item">
+            <a (click)="filter('')">
+                <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt="">
+                <h6>All Books</h6>
+            </a>
+        </div>
+        <div class="item1">
+            <a (click)="filter('electronics')">
+                <img src="https://images.penguinrandomhouse.com/cover/9780593481493" alt="">
+                <h6>Adventure</h6>
+            </a>
+        </div>
+        <div class="item2">
+            <a (click)="filter('fashion')">
+                <img src="https://rukminim1.flixcart.com/image/400/400/kvvad8w0/book/3/n/q/the-mystery-box-original-imag8nyfr2ezpebs.jpeg?q=90&crop=false" alt="">
+                <h6>Crime and Mystery</h6>
+            </a>
+        </div>
+        <div class="item3">
+            <a (click)="filter('jewelery')">
+                <img style="width: 56px; margin-top: 1px;" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/science-fiction-book-cover-design-template-b3ebf6385a80a0f8a08d5e813d2bdf44_screen.jpg?ts=1637019532" alt="">
+                <h6>Sci-Fi</h6>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let item of filterCategory | filter:searchKey:'title'">
+            <div class="card col-md-3">
+                <img src="{{item.image}}" alt="">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
+                <p><strong>Price:</strong> ${{item.price}}</p>
+                <button class="btn btn-primary" (click)=addtocart(item)>Add to cart</button>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
