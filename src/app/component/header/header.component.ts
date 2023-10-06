@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 import { CartService } from 'src/app/service/cart.service';
 
 @Component({
@@ -10,7 +11,9 @@ export class HeaderComponent implements OnInit {
 
   public totalItem : number = 0;
   public searchTerm !: string;
-  constructor(private cartService : CartService) { }
+  constructor(private cartService : CartService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
@@ -23,4 +26,11 @@ export class HeaderComponent implements OnInit {
     console.log(this.searchTerm);
     this.cartService.search.next(this.searchTerm);
   }
+
+  
+  logout() {
+    
+    this.authService.logout();
+  }
+
 }
